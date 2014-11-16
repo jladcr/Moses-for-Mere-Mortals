@@ -12,6 +12,7 @@ This guide has 19 steps to install Moses for Mere Mortals and translate and scor
 3. Download the 1.23 release to /home/<username>/Desktop/Machine-Translation:
 
   _~$_ cd /home/<username>/Desktop/Machine-Translation
+  
   _~/Desktop/Machine-Translation$_ wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.23.tar.gz
   
 4. Extract the 1.23 release:

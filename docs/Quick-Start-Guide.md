@@ -21,6 +21,7 @@ This guide has 19 steps to install Moses for Mere Mortals and translate and scor
   
 5. Move the contents of the directory just created and erase it as well as the tar.gz file:
 
+  _~/Desktop/Machine-Translation$_ mkdir /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals [Enter]
   _~/Desktop/Machine-Translation$_ mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals [Enter]
   _~/Desktop/Machine-Translation$_ rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/ [Enter]
   _~/Desktop/Machine-Translation$_ rm -f /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz [Enter]

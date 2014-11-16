@@ -9,25 +9,25 @@ This guide has 19 steps to install Moses for Mere Mortals and translate and scor
 
   _~$_ mkdir /home/{username}/Desktop/Machine-Translation (“{username}” is your Linux userid)
   
-3. Download the 1.23 release to /home/<username>/Desktop/Machine-Translation:
+3. Download the 1.23 release to /home/{username}/Desktop/Machine-Translation:
 
-  _~$_ cd /home/<username>/Desktop/Machine-Translation
+  _~$_ cd /home/{username}/Desktop/Machine-Translation
   
   _~/Desktop/Machine-Translation$_ wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.23.tar.gz
   
 4. Extract the 1.23 release:
  
-  _~/Desktop/Machine-Translation$_ tar xvf /home/<username>/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
+  _~/Desktop/Machine-Translation$_ tar xvf /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
   
 5. Move the contents of the directory just created and erase it as well as the tar.gz file:
 
-  _~/Desktop/Machine-Translation$_ mv /home/<username>/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/<username>/Desktop/Machine-Translation/Moses-for-Mere-Mortals [Enter]
-  _~/Desktop/Machine-Translation$_ rm -rf /home/<username>/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/ [Enter]
-  _~/Desktop/Machine-Translation$_ rm -f /home/<username>/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
+  _~/Desktop/Machine-Translation$_ mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals [Enter]
+  _~/Desktop/Machine-Translation$_ rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/ [Enter]
+  _~/Desktop/Machine-Translation$_ rm -f /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
    
 6. Change to the Moses for Mere Mortals scripts directory:
 
-  _~$_ cd /home/<username>/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts [Enter]
+  _~$_ cd /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts [Enter]
   
 7. Install dependencies (copy to the Terminal just what follows the prompt, which is in this case “~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$ “):
 

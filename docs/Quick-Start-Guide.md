@@ -7,7 +7,7 @@ This guide has 19 steps to install Moses for Mere Mortals and translate and scor
 
 2. Create the Machine-Translation directory:
 
-  _~$_ mkdir /home/<username>/Desktop/Machine-Translation (“<username>” is your Linux userid)
+  _~$_ mkdir /home/{username}/Desktop/Machine-Translation (“{username}” is your Linux userid)
   
 3. Download the 1.23 release to /home/<username>/Desktop/Machine-Translation:
 

@@ -1,0 +1,149 @@
+#!/bin/bash
+# (c) 2007 Mikel L. Forcada
+#
+# This script approximates the word error rate (WER) between
+# a translation
+# performed by the apertium MT system and a reference translation
+# obtained by post-editing the system output; it also uses the original
+# text to compute the coverage of the system's dictionaries.
+# 
+# It "approximates" because it uses "diff -d", which is an approximation
+# to the real edit distance.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License (http://www.gnu.org/licenses/gpl.txt)
+# for more details.
+#
+
+
+# Perhaps I wouldn't need to write this if I knew more bash scripting...
+# Alternatives welcome
+function percentage {
+local x=$[100*$1/$2]
+local y=$[10000*$1/$2-100*x]
+if [[ y -le 10 ]]
+then y="0"$y
+fi
+echo $x"."$y"%"
+}
+
+function diffprocessor { 
+# Also, I know this is not beautiful
+# but lets me have all in one file
+# I parse the default output of diff -d
+# To compute insertions, deletions and substitutions
+
+
+awk 'BEGIN { FS="[acd,]"} 
+
+# nd number of deletions
+# ni number of insertions
+# ns number of substitutions
+# n  number of words affected in the original text
+
+# Deletions
+
+/^[0-9]+d[0-9]+$/ {nd++; n++;}
+/^[0-9]+,[0-9]+d[0-9]+$/ {l=($2-$1+1); nd+=l; n+=l}
+
+# Insertions
+
+/^[0-9]+a[0-9]+$/ {ni++;}
+/^[0-9]+a[0-9]+,[0-9]+$/ {ni+=($3-$2+1);}
+
+
+# Substitutions
+/^[0-9]+,[0-9]+c[0-9]+,[0-9]+$/ {
+                                 l=($2-$1+1); r=($4-$3+1); n+=l; 
+                                 if (l==r) ns+=l;
+                                 else if (l>r) {ns+=r; nd+=(l-r);}
+                                 else {ns+=l; ni+=(r-l);}
+                                }
+/^[0-9]+,[0-9]+c[0-9]+$/ {       l=($2-$1+1); n+=l;
+                                 if (l==1) ns+=1;
+                                 else if (l>1) {ns++; nd+=(l-1);}
+                                }
+/^[0-9]+c[0-9]+,[0-9]+$/ {       r=($3-$2+1); n++;
+                                 if (r==1) ns+=1;
+                                 else if (r>1) {ns++; ni+=(r-1);}
+                                }
+/^[0-9]+c[0-9]+$/ {n++; ns++;}
+
+  END {print ns+ni+nd}'
+}
+
+case $# in
+  1)
+    FILENAME=$1
+    ;;
+  *)
+    echo "USAGE: $(basename $0) <basefilename>"
+    echo "basefilename    Base filename for evaluation (no extensions)"
+    echo ".orig=original text "
+    echo ".raw=raw translation "
+    echo ".corr=corrected translation "
+    exit 1;
+esac
+
+
+# Generate original file with one word per line and no blank lines
+cat $FILENAME.orig | tr ' ' '\012' | grep -v ^$ >$FILENAME.o
+norigwords=$(cat $FILENAME.o | wc -l)
+
+# Generate raw file with one word per line and no blank lines
+cat $FILENAME.raw | tr ' ' '\012' | grep -v ^$ >$FILENAME.rs
+nrawwords=$(cat $FILENAME.rs | wc -l)
+
+# Count stars 
+norigunknown=$(cat $FILENAME.rs | grep "[*]" | wc -l)
+echo $norigunknown >>$FILENAME.aux
+echo "Number of words in raw translation to be corrected "$FILENAME.raw" : "$nrawwords;
+echo "Number of unknown words in "$FILENAME".orig : "$norigunknown
+
+# Compute percentage of unknown words, echo and store
+forigunknown=$(percentage $norigunknown $norigwords)
+echo $forigunknown >>$FILENAME.aux
+echo "Percentage of unknown words in "$FILENAME".raw : "$forigunknown
+
+# Remove stars (avoid second translation) and 
+# generate raw file with one word per line and no blank lines
+cat $FILENAME.raw | sed 's/[*]//g' | tr ' ' '\012' | \
+grep -v ^$ >$FILENAME.r
+
+# Convert corrected translation to 1 word per line, no blank lines
+cat $FILENAME.corr | tr ' ' '\012' | grep -v ^$ >$FILENAME.c
+
+# Count words in raw translation
+nrawwords=$(cat $FILENAME.r | wc -l)
+
+# Make difference of two files and compute number of 1-word edit operations (with stars)
+nedits_stars=$(diff -d $FILENAME.rs $FILENAME.c | diffprocessor )
+
+# Make difference of two files and compute number of 1-word edit operations (without stars)
+nedits_nostars=$(diff -d $FILENAME.r $FILENAME.c | diffprocessor )
+
+# Start reporting
+echo "Report for corrected file "$FILENAME.corr
+echo "Number of words in raw translation : "$nrawwords
+echo "" >>$FILENAME.aux
+echo $nrawwords >>$FILENAME.aux
+echo "Number of 1-word edit operations needed : "$nedits_nostars
+echo $nedits_nostars >>$FILENAME.aux
+
+# Compute "error rate"
+error_rate=$(percentage $nedits_nostars $nrawwords)
+echo "Percent error rate : "$error_rate
+echo $error_rate  >>$FILENAME.aux
+
+# Number of "free rides" (unknown words which came out right)
+nfree=$[nedits_stars-nedits_nostars]
+error_rate2=$(percentage $nedits_stars $nrawwords) 
+echo "Number of unknown words which were free rides : "$nfree
+echo "Number of 1-word edit operations needed (incl. unknown) :"$nedits_stars
+echo "Percent error rate taking unknown words into account : "$error_rate2
+echo $nfree >>$FILENAME.aux
+
+#Clean up
+rm $FILENAME.o $FILENAME.r $FILENAME.rs $FILENAME.c

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+#
+# transfer-training-to-another-location-0.09
+# date: 15/09/2014
+#
+# Copyright 2009, 2014, João L. A. C. Rosas
+#
+# Special thanks to Hilário Leal Fontes and Maria José Machado,
+# who helped to test the script and made very helpful suggestions
+#
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+# licenced under the GPL licence, version 3
+
+# PURPOSE: 
+#=========
+# Creates a copy of your trained corpora that can be used by someone else (even if in another computer) or by yourself in a different Moses installation (you can have more than one Moses installation in the same computer). Your $mosesdir is written literally (e.g., "/home/john") in several trained corpora files. You have to change that string so that it reflects the $mosesdir to which you want to transfer your trainings. This script locates your $mosesdir string in your trained corpora files and substitutes it by the equivalent $mosesdir string that defines the location where you want your trainings transferred to. It creates a $mosesdir/corpora_trained_for_another_location/newusername directory, within which it will create the corpora_trained and logs directory prepared for the other user/Moses installation. Takes a good while to run if you have trained very large corpora.
+
+#  PRE-REQUIREMENTS:
+#===================
+# 1. The install-* script must have been run
+# 2. Moses for Mere Mortals must have been created with the create-* script
+# 3. The train-* script must have been run
+
+#####################################################################################
+# The values of the variables that follow should be filled according to your needs:
+#####################################################################################
+# Base dir of the Moses system (e.g., $HOME/moses-irstlm-randlm) whose trainings you want to transfer to another location (!!! you have to fill this parameter !!!)
+mosesdirmine="$HOME/Desktop/Machine_Translation/MMM"
+# ***Login name*** of the user to whom the trained corpora will be transferred; ex: "john" (!!! you have to fill this parameter !!!)
+newusername=john
+# Basedir of the Moses system to which the trained corpora will be transferred; ex: "/media/1.5TB/moses-irstlm-randlm"  (!!! you have to fill this parameter !!!)
+mosesdirotheruser="$HOME/Desktop/Machine_Translation/moses-irstlm-randlm"
+####################################################################################
+# DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
+####################################################################################
+
+# Register start date and time of corpus training 
+startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
+#Base dir of trained corpora (before being transfered)
+corporatraineddir="$mosesdirmine/corpora_trained"
+#Base dir of copy of your trained corpora prepared to be used by user $newusername
+corporatoexchange="$mosesdirmine/corpora_trained_for_another_location/$newusername"
+if [ ! -d "$corporatoexchange" ]; then
+	mkdir -p "$corporatoexchange"
+fi
+
+echo "Please wait. This can take a long time if $mosesdirmine has many trained corpora or especially large trained corpora..."
+#copy present corporatraineddir to a safe place
+cp -rf "$mosesdirmine/corpora_trained" "$corporatoexchange"
+cp -rf "$mosesdirmine/logs" "$corporatoexchange"
+
+if [ -d "$corporatoexchange" ]; then
+	cd "$corporatoexchange"
+	grep -lr -e "$mosesdirmine" * | xargs sed -i'' "s#$mosesdirmine#$mosesdirotheruser#g"
+fi
+echo ""
+echo "Processing done. The trained corpora prepared for user $newusername are located in the $corporatoexchange directory. Please transfer manually its corpora_trained and logs subdirectories to the $mosesdirotheruser directory. YOU ARE STRONGLY ADVISED TO MAKE A BACKUP OF THIS LATTER DIRECTORY BEFORE THAT TRANSFER. After having done it and having checked that the training works in the new location, you can safely erase the $mosesdirmine/corpora_trained_for_another_location directory. Your trained corpus in $mosesdirmine was not changed."
+echo ""
+echo "Starting time: $startdate"
+echo "End time     : `date +day:%d/%m/%y-time:%H:%M:%S`"
+echo ""
+

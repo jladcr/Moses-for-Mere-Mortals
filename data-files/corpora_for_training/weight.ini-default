@@ -1,0 +1,31 @@
+#########################
+### MOSES CONFIG FILE ###
+#########################
+
+# distortion (reordering) weight
+[weight-d]
+0.3
+0.3
+0.3
+0.3
+0.3
+0.3
+0.3
+
+# language model weights
+[weight-l]
+0.5000
+
+
+# translation model weights
+[weight-t]
+0.20
+0.20
+0.20
+0.20
+0.20
+
+# word penalty
+[weight-w]
+0
+

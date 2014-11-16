@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# Licenced under the GPL licence, version 3
+# The Moses decoder (https://github.com/moses-smt/mosesdecoder), is a tool upon which this script depends that is licenced under the GNU Library or Lesser General Public License (LGPL)
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+#
+# install-0.50
+# Date: 15/09/2014
+#
+# Copyright 2014, João L. A. C. Rosas
+#
+# Special thanks to Hilário Leal Fontes and Maria José Machado,
+# who helped to test the script and made very helpful suggestions
+#
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
+# PURPOSE: 
+#=========
+# Installs all the packages needed for compiling both Moses and Moses for Mere Mortals. If you want to have a greater probability that a Ubuntu update doesn't break the machine translation system that will be created with the install-* and create-* scripts, run this install-* script just once and then avoid making Ubuntu updates (this is the recommended action if you can use your computer only for machine translation purposes)
+
+
+#  PRE-REQUIREMENTS:
+#===================
+# 1) Internet connection (not absolutely necessary)
+# 2) A Ubuntu 12.04 or 14.04 LTS 64-bit environment
+
+#####################################################################################
+# The values of the variables that follow should be filled according to your needs:
+#####################################################################################
+# Full path of the base directory location of your Moses system (it is the directory where this install-0.50 script, and the other scripts, are)
+mosesdir="$HOME/Desktop/Machine-Translation/MMM"
+####################################################################################
+# DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
+####################################################################################
+startdate=`date +day-%Y-%m-%d.time-%H-%M-%S`
+a=$0
+d1=`date +%s`
+logname=${a##*/}-$d1
+
+pwd="$PWD"
+report_dir="$mosesdir/reports"
+mkdir -p "$report_dir" 2>/dev/null
+mkdir -p "$mosesdir/logs/install" 2>/dev/null
+echo "#========================================================================" > "$report_dir/install.`date +day-%Y-%m-%d.time-%H-%M-%S`.report"
+echo "MMMdir=$pwd" >> "$report_dir/install.`date +day-%Y-%m-%d.time-%H-%M-%S`.report"
+echo "Script=$0" >> "$report_dir/install.`date +day-%Y-%m-%d.time-%H-%M-%S`.report"
+echo "#========================================================================" >> "$report_dir/install.`date +day-%Y-%m-%d.time-%H-%M-%S`.report"
+#-------------------------------------------------------------------------------------
+echo "*** Checking Ubuntu version and computer architecture; installing Moses dependencies and other utils ..."
+#-------------------------------------------------------------------------------------
+install_dependencies(){
+	#temp=`ip r | grep default | cut -d ' ' -f 3`
+	echo "*** Seeing if Internet connection available ..."
+	temp=`ping -w1 -c1 "www.google.com"`
+	if [ "$temp." == "." ]; then
+		echo "You do not have a working Internet connection, which is necessary for updating and downloading packages."
+		echo "Moses for Mere Mortals installation will be stopped. Exiting ..."
+	  exit 1
+	else 
+		ARCHITECTURE=`uname -m`
+		CODENAME=$(lsb_release -cs)
+
+		if [ "$CODENAME" != "precise" -a "$CODENAME" != "trusty" ]; then
+			echo "You are using $CODENAME. Only Ubuntu precise (12.04) or trusty (14.04) is supported. Use at your own risk."
+			read -p "Press any key to continue..."
+			echo -e "\n"
+		else
+			echo "Please enter your root password in order to install and /or update the following packages, essential for Moses and Moses for Mere Mortals to compile: binutils, build-essential, gcc, libc6-dev, libboost-all-dev"
+			sudo apt-get update
+			sudo apt-get install --reinstall binutils
+			sudo apt-get install --reinstall build-essential
+			sudo apt-get install --reinstall libc6-dev
+			sudo apt-get install --reinstall gcc
+			sudo apt-get install --reinstall libboost-all-dev
+		fi
+		if [ $ARCHITECTURE != "i686" ]; then
+			if [ $ARCHITECTURE != "x86_64" ]; then
+				echo "Only i686 and x86_64 architectures are supported. Use at your own risk."
+				read -p "Press any key to continue..."
+			fi
+		fi
+		if [ "`ps -e | grep 'software-center'`." != "." ]; then 
+		     		echo "Please close Software Center before resuming the installation."
+		     		read -p "Press any key to continue..."
+		fi 
+		if [ "`ps -e | grep 'synaptic'`." != "." ]; then 
+		     		echo "Please close Synaptic before resuming the installation."
+		     		read -p "Press any key to continue..."
+		fi
+		if [ "`ps -e | grep 'update-manager'`." != "." ]; then 
+		     		echo "Please close Update Manager before resuming the installation."
+		     		read -p "Press any key to continue..."
+		fi
+		if [ "`ps -e | grep 'apt-get'`." != "." ]; then 
+		     		echo "Please wait for apt-get to finish running before resuming the installation."
+		     		read -p "Press any key to continue..."
+		fi       
+		if [ "`ps -e | grep 'dpkg'`." != "." ]; then 
+		     		echo "Please wait for dpkg to finish running before resuming the installation."
+		     		read -p "Press any key to continue..."
+		fi       
+		if [ "$CODENAME" = "precise" ]; then
+			echo "Please enter your root password in order to install the following packages needed for Moses and Moses for Mere Mortals to compile: autoconf automake binutils-gold bison bzip2 cmake csh curl default-jdk flex gawk gcc-multilib graphviz-dev gv gzip help2man ia32-libs imagemagick ksh libbz2-dev libc6-dev-i386 libgc-dev libbz2-dev liblzma-dev libpthread-stubs0-dev libreoffice libtool libtcmalloc-minimal0 libtcmalloc-minimal0-dbg libxml-twig-perl p7zip pythoncard python-wxtools sparsehash tcl tcsh tofrodos unoconv wget xdot xz-utils zlib1g-dev zlibc"
+			echo ""
+			echo "When you enter your password you will not see any of the characters being typed. This is normal. When you finish entering it, press the ENTER key."
+
+
+			sudo apt-get install -fy autoconf automake binutils-gold bison bzip2 cmake csh curl default-jdk flex gawk gcc-multilib graphviz-dev gv gzip help2man ia32-libs imagemagick ksh libbz2-dev libc6-dev-i386 libgc-dev libbz2-dev liblzma-dev libpthread-stubs0-dev libreoffice libtool libtcmalloc-minimal0 libtcmalloc-minimal0-dbg libxml-twig-perl p7zip pythoncard python-wxtools sparsehash tcl tcsh tofrodos unoconv wget xdot xz-utils zlib1g-dev zlibc
+		fi
+		if [ "$CODENAME" = "trusty" ]; then
+			echo "Please enter your root password in order to install the following packages needed for Moses and Moses for Mere Mortals to compile: autoconf automake binutils-gold bison bzip2 cmake csh curl default-jdk flex gawk gcc-multilib graphviz-dev gv gzip help2man imagemagick ksh lib32z1 lib32ncurses5 lib32bz2-1.0 libbz2-dev libc6-dev-i386 libgc-dev libbz2-dev liblzma-dev libpthread-stubs0-dev libreoffice libtool libtcmalloc-minimal4 libtcmalloc-minimal4-dbg libxml-twig-perl p7zip pythoncard python-wxtools sparsehash tcl tcsh tofrodos unoconv wget xdot xz-utils zlib1g-dev zlibc"
+			echo ""
+			echo "When you enter your password you will not see any of the characters being typed. This is normal. When you finish entering it, press the ENTER key."
+			sudo apt-get install -fy autoconf automake binutils-gold bison bzip2 cmake csh curl default-jdk flex gawk gcc-multilib graphviz-dev gv gzip help2man imagemagick ksh lib32z1 lib32ncurses5 lib32bz2-1.0 libbz2-dev libc6-dev-i386 libgc-dev libbz2-dev liblzma-dev libpthread-stubs0-dev libreoffice libtool libtcmalloc-minimal4 libtcmalloc-minimal4-dbg libxml-twig-perl p7zip pythoncard python-wxtools sparsehash tcl tcsh tofrodos unoconv wget xdot xz-utils zlib1g-dev zlibc
+		fi
+	fi
+}
+
+#-------------------------------------------------------------------------------------
+# MAIN PROGRAM
+#-------------------------------------------------------------------------------------
+
+{
+  install_dependencies
+  echo ""
+  echo "The packages upon which Moses and Moses for Mere Mortals depend have been installed."
+  echo ""
+  exit 0
+} 2>&1 | tee "$mosesdir/logs/install/$logname.log"
+
+

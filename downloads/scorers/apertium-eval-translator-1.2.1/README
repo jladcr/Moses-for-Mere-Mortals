@@ -1,0 +1,46 @@
+apertium-eval-translator.pl
+-------------------------------------------------------------------
+
+Simple Perl script to evaluate Apertium-based machine translation
+systems.
+
+This software calculates (at document level) the word error rate (WER)
+and the position-independent word error rate (PER) between a
+translation performed by the Apertium MT system and a reference
+translation obtained by post-editing the system output.
+
+For more information execute the script (after installation) 
+without arguments
+
+$ apertium-eval-translator
+
+apertium-eval-translator-line.pl
+-------------------------------------------------------------------
+Similar to apertium-eval-translator but it assumes that test and reference
+files has the same number of sentences and are in the one-sentence-per-line format
+
+bootstrap_resampling.pl
+-------------------------------------------------------------------
+Computes confidence intervals for MT evaluation. See paper
+http://acl.ldc.upenn.edu/acl2004/emnlp/pdf/Koehn.pdf 
+
+Scripts wer.sh, ter.sh and bleu.sh ares provided as examples of 
+the script that needs to be supplied to 
+bootstrap_resampling.pl to evaluate MT performance. 
+Note: ter.sh and bleu.sh need software not distributed in this package.
+
+-------------------------------------------------------------------
+
+Suggestions are very welcome. Please write to Felipe Sánchez Martínez
+at fsanchez@dlsi.ua.es .
+
+===================================================================
+===================================================================
+
+apertium-eval
+-------------------------------------------------------------------
+This is not intended to be a substitute for Felipe Sanchez's 
+apertium-eval-translator. It just provides an alternative way 
+to approximate the word error rate by processing the output of "diff -d". 
+Run apertium-eval without arguments for a usage message.
+

@@ -26,37 +26,40 @@ _Hint 2: instead of typing the instructions that follow, just copy and paste the
 5. Move the contents of the directory just created and erase it as well as the tar.gz file:
 
   _~/Desktop/Machine-Translation$_ **mkdir /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals** [Enter]
+  
   _~/Desktop/Machine-Translation$_ **mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals** [Enter]
-  _~/Desktop/Machine-Translation$_ **rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/»» [Enter]
-  _~/Desktop/Machine-Translation$_ rm -f /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
+  
+  _~/Desktop/Machine-Translation$_ **rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/** [Enter]
+  
+  _~/Desktop/Machine-Translation$_ **rm -f /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz** [Enter]
    
 6. Change to the Moses for Mere Mortals scripts directory:
 
-  _~$_ cd /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts [Enter]
+  _~$_ **cd /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts** [Enter]
   
 7. Install dependencies (copy to the Terminal just what follows the prompt, which is in this case “~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$ “):
 
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./install-0.50 [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **./install-0.50** [Enter]
   
 8. Build (create) the main Moses for Mere Mortals products:
 
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./create-1.43[Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **./create-1.43** [Enter]
   
 ##Train translation model 
 9. Prepare the training corpus (this step should be omitted if you are using the default values of the scripts): 
 
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./make-test-files-0.27 [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **./make-test-files-0.27** [Enter]
    
 10. Train the translation model:
 
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./train-1.22 [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **./train-1.22** [Enter]
   
 11. Wait for training to finish. (Over 3 hours on Intel i7 720-QM processor with 8 GB RAM)
 
 ##Translate a document
 12. Find the filename of the new log (the exact name will be different from that below):
  
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ls ~/Machine-Translation/MMM/logs [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **ls ~/Machine-Translation/MMM/logs** [Enter]
   
   The name will be similar to the following one:
   
@@ -64,7 +67,7 @@ _Hint 2: instead of typing the instructions that follow, just copy and paste the
     
 13. Use an editor such as gedit to add the log's filename to the line starting with “logfile=”:
  
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ gedit ./translate-1.38 [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **gedit ./translate-1.38** [Enter]
   
   Look for "logfile=" and insert there the name that you found in step 11:
   
@@ -74,21 +77,20 @@ _Hint 2: instead of typing the instructions that follow, just copy and paste the
 
 15. Translate a document:
  
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./translate-1.38 [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **./translate-1.38** [Enter]
   
 16. Review the translation output: 
 
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ gedit \
-  ~/Desktop/Machine-Translation/MMM/translation_output/100.pt.en.moses [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **gedit ~/Desktop/Machine-Translation/MMM/translation_output/100.pt.en.moses** [Enter]
   
 ##Score the translation (compare it to a human translation)
 17. Evaluate the translation:
  
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./score-0.89 [Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **./score-0.89** [Enter]
   
 18. Get the name of the score report file (the exact name will be different from that below):
  
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ls ~/Desktop/Machine-Translation/MMM/translation_scoring [Enter] 
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **ls ~/Desktop/Machine-Translation/MMM/translation_scoring** [Enter] 
 
   The name will be similar to the following one:
 
@@ -96,7 +98,6 @@ _Hint 2: instead of typing the instructions that follow, just copy and paste the
     
 19. Review the evaluation output: 
 
-  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ gedit \
-~/Desktop/Machine-Translation/MMM/translation_scoring/100-BLEU-0.6063-NIST-8.1554-12-07-2010-pt-en.F-0-R-1-T-1.L-1 [Enter] 
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ **gedit ~/Desktop/Machine-Translation/MMM/translation_scoring/100-BLEU-0.6063-NIST-8.1554-12-07-2010-pt-en.F-0-R-1-T-1.L-1** [Enter] 
 
 _Special thanks to Tom Hoar for consolidating the previous documentation into the very first version of this Quick-Start-Guide.docx to help users to get up to speed very quickly._

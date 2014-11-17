@@ -6,7 +6,7 @@ Set of Linux bash scripts that, together, create a **basic translation chain pro
 
 The idea is to help build a translation chain for the real world, but it should also enable a quick evaluation of Moses for actual translation work and guide users in their first steps of  using Moses. 
 
-If you want to use the latest stable and tested version of Moses for Mere Mortals, just download the tar.gz files in the https://github.com/jladcr/Moses-for-Mere-Mortals/tree/master/Downloadable_Versions page.
+If you want to use the latest stable and tested version of Moses for Mere Mortals, just click the Releases button at the top of this page and choose the release you are interested in. Moses for Mere Mortals is to be run on an Ubuntu environment. The Windows addins should be installed and run in Microsoft Windows.
 
 A **Tutorial** and a **demonstration corpus** (too small for doing justice to the qualitative results that can be achieved with Moses, but able of giving a realistic view of the relative duration of the steps involved) are available. 
 

@@ -36,7 +36,7 @@ This guide has 19 steps to install Moses for Mere Mortals and translate and scor
   
 8. Build (create) the main Moses for Mere Mortals products:
 
-  ~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./create-1.43[Enter]
+  _~/Desktop/Machine-Translation/Moses-for-Mere-Mortals/scripts$_ ./create-1.43[Enter]
   
 ##Train translation model 
 9. Prepare the training corpus (this step should be omitted if you are using the default values of the scripts): 

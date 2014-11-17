@@ -1,6 +1,6 @@
 #Quick Start Guide v.2
 
-This guide has 19 steps to install Moses for Mere Mortals and translate and score a document with the default values on a new computer. Refer to the Tutorial.docx for detailed instructions including how to change the defaults. During the installation, the prompt will change. In what follows, it is indicated in _italic_. This text (and the space that follows it) should not be entered in the terminal. 
+This guide has 19 steps to install Moses for Mere Mortals and translate and score a document with the default values on a new computer. Refer to the Tutorial.docx for detailed instructions, including how to change the defaults. During the installation, the prompt will change. In what follows, it is indicated in _italic_. This text (and the space that follows it) should not be entered in the terminal. 
 
 _Hint 1: search and replace in this file "{username}" by your username. Like this, you will be able to copy and paste the instructions that follow._
 
@@ -11,23 +11,23 @@ _Hint 2: instead of typing the instructions that follow, just copy and paste the
 
 2. Create the Machine-Translation directory:
 
-  _~$_ mkdir /home/{username}/Desktop/Machine-Translation (“{username}” is your Linux userid)
+  _~$_ **mkdir /home/{username}/Desktop/Machine-Translation** (“{username}” is your Linux userid)
   
 3. Download the 1.23 release to /home/{username}/Desktop/Machine-Translation:
 
-  _~$_ cd /home/{username}/Desktop/Machine-Translation
+  _~$_ **cd /home/{username}/Desktop/Machine-Translation** [Enter]
   
-  _~/Desktop/Machine-Translation$_ wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.23.tar.gz
+  _~/Desktop/Machine-Translation$_ **wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.23.tar.gz** [Enter]
   
 4. Extract the 1.23 release:
  
-  _~/Desktop/Machine-Translation$_ tar xvf /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
+  _~/Desktop/Machine-Translation$_ **tar xvf /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz** [Enter]
   
 5. Move the contents of the directory just created and erase it as well as the tar.gz file:
 
-  _~/Desktop/Machine-Translation$_ mkdir /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals [Enter]
-  _~/Desktop/Machine-Translation$_ mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals [Enter]
-  _~/Desktop/Machine-Translation$_ rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/ [Enter]
+  _~/Desktop/Machine-Translation$_ **mkdir /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals** [Enter]
+  _~/Desktop/Machine-Translation$_ **mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals** [Enter]
+  _~/Desktop/Machine-Translation$_ **rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/»» [Enter]
   _~/Desktop/Machine-Translation$_ rm -f /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz [Enter]
    
 6. Change to the Moses for Mere Mortals scripts directory:

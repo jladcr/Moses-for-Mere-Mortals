@@ -1,6 +1,10 @@
 #Quick Start Guide v.2
 
-This guide has 19 steps to install Moses for Mere Mortals and translate and score a document with the default values on a new computer. Refer to the Tutorial.docx for detailed instructions including how to change the defaults. During the installation, the prompt will change. In what follows, it is indicated in _italic_. This blue colored text (and the space that follows it) should not be entered in the terminal. Hint: instead of typing the instructions that follow, just copy and paste them in the Terminal.
+This guide has 19 steps to install Moses for Mere Mortals and translate and score a document with the default values on a new computer. Refer to the Tutorial.docx for detailed instructions including how to change the defaults. During the installation, the prompt will change. In what follows, it is indicated in _italic_. This blue colored text (and the space that follows it) should not be entered in the terminal. 
+
+_Hint 1: search and replace in this file "{username}" by your username. Like this, you will be able to copy and paste the instructions that follow._
+
+_Hint 2: instead of typing the instructions that follow, just copy and paste them in the Terminal._
 
 ##Install Moses for Mere Mortals 
 1. Open the Terminal.

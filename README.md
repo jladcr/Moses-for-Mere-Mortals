@@ -1,4 +1,4 @@
-Moses-for-Mere-Mortals - Microsoft Windows addins
+Moses-for-Mere-Mortals - MS Windows addins
 =================================================
 **Machine translation for the real world**
 

@@ -22,8 +22,8 @@ Mgiza:                        (downloaded from https://github.com/moses-smt/mgiz
 Scripts:                      (http://homepages.inf.ed.ac.uk/jschroe1/how-to/scripts.tgz; this link is now broken)
 Mteval:                       (ftp://jaguar.ncsl.nist.gov/mt/resources/mteval-v11b.pl)
 
-***PURPOSES***:
-===============
+***PURPOSES*** :
+================
 
 1) MOSES INSTALLATION WITH A SINGLE COMMAND
 -------------------------------------------

@@ -1,5 +1,5 @@
 #Moses-for-Mere-Mortals
-!["Moses for Mere Mortals Logo"] (https://github.com/jladcr/Moses-for-Mere-Mortals/tree/master/docs/MMM_logo.png "Moses for Mere Mortals Logo")
+![alt text] (https://github.com/jladcr/Moses-for-Mere-Mortals/tree/master/docs/MMM_logo.png "Moses for Mere Mortals Logo")
 ###Machine translation for the real world
 
 Set of Linux bash scripts that, together, create a **basic translation chain prototype** able of processing **very large corpora**. It uses **Moses**, a widely known statistical machine translation (SMT) system. 

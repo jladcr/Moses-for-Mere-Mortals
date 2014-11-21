@@ -1,5 +1,5 @@
 #Moses-for-Mere-Mortals
-###Machine translation for the real world
+###Machine translation for the real world 
 
 Set of Linux bash scripts that, together, create a **basic translation chain prototype** able of processing **very large corpora**. It uses **Moses**, a widely known statistical machine translation (SMT) system. 
 

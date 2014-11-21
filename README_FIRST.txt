@@ -14,8 +14,8 @@ Authors
 * Maria José Bellino Machado (author of the Tutorial; very helpful suggestions and many tests, including the organization 
   of human evaluations)
 
-***IMPORTANT NOTICE***:
-=======================
+***IMPORTANT NOTICE***
+======================
 
 Moses for Mere Mortals (MMM) has been tested with the following 64 bit versions (AMD64) Linux distributions:
 
@@ -30,8 +30,8 @@ Mgiza:                        (downloaded from https://github.com/moses-smt/mgiz
 Scripts:                      (http://homepages.inf.ed.ac.uk/jschroe1/how-to/scripts.tgz; this link is now broken)
 Mteval:                       (ftp://jaguar.ncsl.nist.gov/mt/resources/mteval-v11b.pl)
 
-***PURPOSES*** :
-================
+***PURPOSES***
+==============
 
 1) MOSES INSTALLATION WITH A SINGLE COMMAND
 -------------------------------------------
@@ -78,8 +78,8 @@ more, it does work!
 MMM was designed to be very easy and immediately feasible to use and that's indeed why it was made for mere mortals and 
 called as such.
 
-***SOME CHARACTERISTICS***:
-===========================
+***SOME CHARACTERISTICS***
+==========================
  1) Compiles all the packages used by these scripts with a single instruction;
  2) Removes control characters from the input files (these can crash a training);
  3) Extracts from the corpus files 2 test files , 2 train files and 2 tuning files by pseudorandomly selecting 

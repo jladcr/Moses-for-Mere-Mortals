@@ -35,9 +35,6 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-#Base directory of your Moses installation (made by the create script)
-mosesdir="$HOME/Desktop/Machine-Translation/MMM"
-
 #Number of processors of your computer that will be used by MGIZA (if you use all the processors available, the training will be considerably speeded) 
 #!!! To use all the cores available in your computer, leave this parameter empty!!!
 cores=
@@ -63,6 +60,7 @@ else
 fi
 
 pwd="$PWD"
+source mt-location
 
 #Directory where Moses translation tools are located
 toolsdir="$mosesdir/tools"

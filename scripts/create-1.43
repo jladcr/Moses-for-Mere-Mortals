@@ -31,11 +31,8 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-# Full path of the base directory of your Moses system (which will be created by this script) 
-mosesdir="$HOME/Desktop/Machine-Translation/MMM"
-
-# Full path of the place where the Moses for Mere Mortals scripts subdirectory is
-MMMdir="$HOME/Desktop/Machine-Translation/Moses-for-Mere-Mortals"
+#Edit the file 'mt-location' to change $mosesdir and $MMMdir for all scripts.
+source mt-location
 
 #Full path of the already trained corpora (place where trainings are stocked)
 corpora_trained="$mosesdir/corpora_trained"

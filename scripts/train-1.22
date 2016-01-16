@@ -29,8 +29,8 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 
-#Full path of the base directory of your Moses system 
-mosesdir="$HOME/Desktop/Machine-Translation/MMM"
+#Edit the file 'mt-location' to change $mosesdir for all scripts.
+source mt-location 
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #NOTE 1: The corpus that you want to train, together with the respective tuning files (if different), the testing files (if different), the file used for recasing, and the file used to build the language model (if different) should be placed in $mosesdir/corpora_for_training !!!

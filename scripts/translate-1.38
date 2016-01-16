@@ -38,8 +38,8 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 
-#Full path of the base directory of your Moses system 
-mosesdir="$HOME/Desktop/Machine-Translation/MMM"
+#Edit the file 'mt-location' to change $mosesdir for all scripts.
+source mt-location 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Even if you are using the demonstration corpus, you have to fill the $report_file parameter so that the script can be executed !!! 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -25,8 +25,8 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-# Base dir of the Moses system (e.g., $HOME/moses-irstlm-randlm) whose trainings you want to transfer to another location (!!! you have to fill this parameter !!!)
-mosesdirmine="$HOME/Desktop/Machine-Translation/MMM"
+# The file 'mt-location' defines $mosesdirmine and is called by `source mt-location` below.
+
 # ***Login name*** of the user to whom the trained corpora will be transferred; ex: "john" (!!! you have to fill this parameter !!!)
 newusername=john
 # Basedir of the Moses system to which the trained corpora will be transferred; ex: "/media/1.5TB/moses-irstlm-randlm"  (!!! you have to fill this parameter !!!)
@@ -34,7 +34,8 @@ mosesdirotheruser="$HOME/Desktop/Machine-Translation/moses-irstlm-randlm"
 ####################################################################################
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
-
+# The file 'mt-location' defines $mosesdirmine
+source mt-location
 # Register start date and time of corpus training 
 startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
 #Base dir of trained corpora (before being transfered)

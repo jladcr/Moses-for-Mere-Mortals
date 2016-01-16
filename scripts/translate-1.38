@@ -38,8 +38,8 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 
-#Edit the file 'mt-location' to change $mosesdir for all scripts.
-source mt-location 
+#The file 'mt-location' defines $mosesdir for all scripts and is called by `source mt-location` below.
+
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Even if you are using the demonstration corpus, you have to fill the $report_file parameter so that the script can be executed !!! 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,6 +108,8 @@ distortionlimit=6
 ####################################################################################
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
+#The file 'mt-location' defines $mosesdir for all scripts.
+source mt-location
 
 startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
 a=$0

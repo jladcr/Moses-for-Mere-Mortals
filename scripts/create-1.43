@@ -31,7 +31,7 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-#The file 'mt-location' defines $mosesdir and $MMMdir and is called below by `source mt-location`
+#The file 'mt-location' defines $mosesdir and $MMMdir and is called below by the `source` command below
 
 #Number of processors of your computer that will be used by MGIZA (if you use all the processors available, the training speed will be improve considerably)
 #!!! To use all the cores available in your computer, leave this parameter empty!!!
@@ -93,7 +93,7 @@ megampack=megam_i686.opt
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
 #The file 'mt-location' defines $mosesdir and $MMMdir for all scripts.
-source mt-location
+source $( cd $(dirname $0) ; pwd -P )/mt-location
 
 #Full path of the already trained corpora (place where trainings are stocked)
 corpora_trained="$mosesdir/corpora_trained"

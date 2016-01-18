@@ -25,7 +25,7 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-# The file 'mt-location' defines $mosesdirmine and is called by `source mt-location` below.
+# The file 'mt-location' defines $mosesdirmine and is called by the `source` command below.
 
 # ***Login name*** of the user to whom the trained corpora will be transferred; ex: "john" (!!! you have to fill this parameter !!!)
 newusername=john
@@ -35,7 +35,7 @@ mosesdirotheruser="$HOME/Desktop/Machine-Translation/moses-irstlm-randlm"
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
 # The file 'mt-location' defines $mosesdirmine
-source mt-location
+source $( cd $(dirname $0) ; pwd -P )/mt-location
 # Register start date and time of corpus training 
 startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
 #Base dir of trained corpora (before being transfered)

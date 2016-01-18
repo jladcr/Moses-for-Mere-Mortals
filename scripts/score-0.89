@@ -35,7 +35,7 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-#The file 'mt-location' defines $mosesdir for all scripts and is called by `source mt-location` below.
+#The file 'mt-location' defines $mosesdir for all scripts and is called by the `source` command below.
 
 #Number of processors of your computer that will be used by MGIZA (if you use all the processors available, the training will be considerably speeded) 
 #!!! To use all the cores available in your computer, leave this parameter empty!!!
@@ -62,7 +62,7 @@ else
 fi
 
 pwd="$PWD"
-source mt-location
+source $( cd $(dirname $0) ; pwd -P )/mt-location
 
 #Directory where Moses translation tools are located
 toolsdir="$mosesdir/tools"

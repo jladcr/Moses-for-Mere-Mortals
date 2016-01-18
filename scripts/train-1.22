@@ -29,7 +29,7 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 
-#The file 'mt-location' defines $mosesdir for all scripts and is called by `source mt-location` below.
+#The file 'mt-location' defines $mosesdir for all scripts and is called by the `source` command below.
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #NOTE 1: The corpus that you want to train, together with the respective tuning files (if different), the testing files (if different), the file used for recasing, and the file used to build the language model (if different) should be placed in $mosesdir/corpora_for_training !!!
@@ -425,7 +425,7 @@ fi
 
 echo "****** build name of directories where corpus trained files will be located"
 #The file 'mt-location' defines $mosesdir for all scripts
-source mt-location
+source $( cd $(dirname $0) ; pwd -P )/mt-location
 #Full path of the tools directory (giza, irstlm, moses, scripts, ...)
 toolsdir="$mosesdir/tools"
 #Full path of the files used for training (corpus, language model, recaser, tuning, evaluation) 

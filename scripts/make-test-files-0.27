@@ -79,7 +79,7 @@ done
 }
 
 echo "******* Initialize"
-source mt-location
+source $( cd $(dirname $0) ; pwd -P )/mt-location
 #Directory where the source and target language files used for creating the training, tuning and test files are located
 original_files_dir="$mosesdir/corpora_for_training"
 #Directory where the source and target language files created for training, tuning and test files are located

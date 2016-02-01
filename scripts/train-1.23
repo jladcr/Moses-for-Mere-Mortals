@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 #
-#  train-1.22
-#  date: 15/09/2014
+#  train-1.23
+#  date: 17/01/2016
 #
-#  Copyright 2009, 2014, João L. A. C. Rosas
+#  Copyright 2009, 2016, João L. A. C. Rosas
 #
 #  Special thanks to Hilário Leal Fontes and Maria José Machado,
 #  who helped to test the script and made very helpful suggestions
@@ -29,7 +29,20 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 
-#The file 'mt-location' defines $mosesdir for all scripts and is called by the `source` command below.
+#Edit the file 'mt-location' to change $mosesdir for all scripts.
+source mt-location-1.00
+if [ ! -d "$mtdir" ]; then
+  echo "The \$mtdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$MMMdir" ]; then
+  echo "The \$MMMdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$mosesdir" ]; then
+  echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. If it is correct, then there could have been a problem compiling the Moses system, present in \$mosesdir. Exiting."
+  exit 1
+fi
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #NOTE 1: The corpus that you want to train, together with the respective tuning files (if different), the testing files (if different), the file used for recasing, and the file used to build the language model (if different) should be placed in $mosesdir/corpora_for_training !!!
@@ -424,8 +437,6 @@ else
 fi
 
 echo "****** build name of directories where corpus trained files will be located"
-#The file 'mt-location' defines $mosesdir for all scripts
-source $( cd $(dirname $0) ; pwd -P )/mt-location
 #Full path of the tools directory (giza, irstlm, moses, scripts, ...)
 toolsdir="$mosesdir/tools"
 #Full path of the files used for training (corpus, language model, recaser, tuning, evaluation) 
@@ -1617,4 +1628,3 @@ fi
 # can compile-lm --memmap IRSTLM (in 64 bits Ubuntu 9.04 version)
 # creates a log of all the files created
 # work directory renamed corpora_trained directory
-

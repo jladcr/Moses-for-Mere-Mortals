@@ -35,7 +35,12 @@ mosesdirotheruser="$HOME/Desktop/Machine-Translation/moses-irstlm-randlm"
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
 # The file 'mt-location' defines $mosesdirmine
-source $( cd $(dirname $0) ; pwd -P )/mt-location
+source mt-location-1.0
+if [ ! -d "$mosesdir" ]; then
+  echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+
 # Register start date and time of corpus training 
 startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
 #Base dir of trained corpora (before being transfered)

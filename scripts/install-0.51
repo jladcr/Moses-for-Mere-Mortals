@@ -4,8 +4,8 @@
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 #
-# install-0.50
-# Date: 15/09/2014
+# install-0.51
+# Date: 17/01/2016
 #
 # Copyright 2014, João L. A. C. Rosas
 #
@@ -33,7 +33,11 @@ d1=`date +%s`
 logname=${a##*/}-$d1
 
 pwd="$PWD"
-source $( cd $(dirname $0) ; pwd -P )/mt-location
+source mt-location-1.00
+if [ ! -d "$mtdir" ]; then
+  echo "The \$mtdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
 report_dir="$mosesdir/reports"
 mkdir -p "$report_dir" 2>/dev/null
 mkdir -p "$mosesdir/logs/install" 2>/dev/null
@@ -123,5 +127,4 @@ install_dependencies(){
   echo ""
   exit 0
 } 2>&1 | tee "$mosesdir/logs/install/$logname.log"
-
 

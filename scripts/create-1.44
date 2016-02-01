@@ -4,10 +4,10 @@
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 #
-# create-1.43
-# Date: 15/09/2014
+# create-1.44
+# Date: 17/01/2016
 #
-# Copyright 2009, 2014, João L. A. C. Rosas
+# Copyright 2009, 2016, João L. A. C. Rosas
 #
 # Special thanks to Hilário Leal Fontes and Maria José Machado,
 # who helped to test the script and made very helpful suggestions
@@ -31,7 +31,15 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-#The file 'mt-location' defines $mosesdir and $MMMdir and is called below by the `source` command below
+#Edit the file 'mt-location' to change $mosesdir and $MMMdir for all scripts.
+source mt-location-1.00
+if [ ! -d "$MMMdir" ]; then
+  echo "The \$MMMdir directory and/or the \$mtdir directory does not exist. Please check these variables in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+
+#Full path of the already trained corpora (place where trainings are stocked)
+corpora_trained="$mosesdir/corpora_trained"
 
 #Number of processors of your computer that will be used by MGIZA (if you use all the processors available, the training speed will be improve considerably)
 #!!! To use all the cores available in your computer, leave this parameter empty!!!
@@ -92,11 +100,6 @@ megampack=megam_i686.opt
 ####################################################################################
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
-#The file 'mt-location' defines $mosesdir and $MMMdir for all scripts.
-source $( cd $(dirname $0) ; pwd -P )/mt-location
-
-#Full path of the already trained corpora (place where trainings are stocked)
-corpora_trained="$mosesdir/corpora_trained"
 
 startdate=`date +day:%d/%m/%Y-time:%H:%M:%S`
 a=$0

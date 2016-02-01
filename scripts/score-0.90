@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 #
-# score-0.89
-# date: 15/09/2014
+# score-0.90
+# date: 17/01/2016
 #
-# Copyright 2009, 2014, João L. A. C. Rosas
+# Copyright 2009, 2016, João L. A. C. Rosas
 #
 # Special thanks to Hilário Leal Fontes and Maria José Machado,
 # who helped to test the script and made very helpful suggestions
@@ -35,8 +35,6 @@
 #####################################################################################
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
-#The file 'mt-location' defines $mosesdir for all scripts and is called by the `source` command below.
-
 #Number of processors of your computer that will be used by MGIZA (if you use all the processors available, the training will be considerably speeded) 
 #!!! To use all the cores available in your computer, leave this parameter empty!!!
 cores=
@@ -62,8 +60,19 @@ else
 fi
 
 pwd="$PWD"
-source $( cd $(dirname $0) ; pwd -P )/mt-location
-
+source mt-location-1.00
+if [ ! -d "$mtdir" ]; then
+  echo "The \$mtdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$MMMdir" ]; then
+  echo "The \$MMMdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$mosesdir" ]; then
+  echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. If it is correct, then there could have been a problem compiling the Moses system, present in \$mosesdir. Exiting."
+  exit 1
+fi
 #Directory where Moses translation tools are located
 toolsdir="$mosesdir/tools"
 #Directory where the documents that have been translated are placed
@@ -91,26 +100,9 @@ mkdir -p "$report_dir" 2>/dev/null
 
 # Define functions
 remove_garbage() {
-	if [ -f "$scoredir/$s" ]; then
-		rm "$scoredir/$s" 2>/dev/null
-	fi
-	if [ -f "$scoredir/$r" ]; then
-		rm "$scoredir/$r" 2>/dev/null
-	fi
-	if [ -f "$scoredir/$m" ]; then
-		rm "$scoredir/$m" 2>/dev/null
-	fi
-	if [ -f "$scoredir/$scorebasename-src.$lang1.sgm" ]; then
-		rm "$scoredir/$scorebasename-src.$lang1.sgm" 2>/dev/null
-	fi
-	if [ -f "$scoredir/$scorebasename-ref.$lang2.sgm" ]; then
-		rm "$scoredir/$scorebasename-ref.$lang2.sgm" 2>/dev/null
-	fi
-	if [ -f "$scoredir/$scorebasename.$lang1-$lang2.moses.sgm" ]; then
-		rm "$scoredir/$scorebasename.$lang1-$lang2.moses.sgm" 2>/dev/null
-	fi
-	rm "$scoredir"/*e 2>/dev/null
-	rm "$scoredir"/*sgm 2>/dev/null
+	if [ -d "$scoredir" ]; then
+	  rm -rf "$scoredir"
+	fi 
 }
 
 log_wrong_file() {
@@ -429,4 +421,3 @@ exit 0
 # Creation of a new file that lists the translations that could not be scored and the reason why
 # Corrects a bug that made it fail when the scorer files included the word "for" in their name
 #=================================================================================================================================================
-

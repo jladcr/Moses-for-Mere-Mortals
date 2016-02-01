@@ -1,0 +1,27 @@
+# This file defines $mosesdir for all scripts.
+
+# Full path of the directory that contains the Moses-for-Mere-Mortals folder
+mtdir="$HOME/Desktop/Machine-Translation"
+
+# Consolidated to a single location: Don't Repeat Yourself.
+# To-do
+# - error checking (does $mtdir exist? etc.)
+# - maybe mtdir=$(readlink -f $(pwd)/../..) 
+# - update script modification dates in comments...version numbers too?
+# - update Chapter 10 of Tutorial.pdf
+# - update Chapter 11 of Tutorial.pdf ($mosesdirmine is no longer user-specified) 
+
+
+####################################################################################
+# DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
+####################################################################################
+# Full path of the base directory of your Moses system (which will be created by this script) 
+mosesdir="$mtdir/MMM"
+
+# Full path of the place where the Moses for Mere Mortals scripts subdirectory is
+# This variable is only used in the create and make-test-files scripts
+MMMdir="$mtdir/Moses-for-Mere-Mortals"
+
+# Base dir of the Moses system (e.g., $HOME/moses-irstlm-randlm) whose trainings you want to transfer to another location
+# This variable is only used in the transfer-training-to-another-location script
+mosesdirmine=$mosesdir

@@ -24,11 +24,6 @@
 # 1) Internet connection (not absolutely necessary)
 # 2) A Ubuntu 12.04 or 14.04 LTS 64-bit environment
 
-#####################################################################################
-# The values of the variables that follow should be filled according to your needs:
-#####################################################################################
-# Full path of the base directory location of your Moses system (it is the directory where this install-0.50 script, and the other scripts, are)
-mosesdir="$HOME/Desktop/Machine-Translation/MMM"
 ####################################################################################
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
@@ -38,6 +33,7 @@ d1=`date +%s`
 logname=${a##*/}-$d1
 
 pwd="$PWD"
+source $( cd $(dirname $0) ; pwd -P )/mt-location
 report_dir="$mosesdir/reports"
 mkdir -p "$report_dir" 2>/dev/null
 mkdir -p "$mosesdir/logs/install" 2>/dev/null

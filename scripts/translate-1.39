@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 #
-# translate-1.38
-# date: 15/09/2014
+# translate-1.39
+# date: 17/01/2016
 #
-# Copyright 2009, 2014, João L. A. C. Rosas
+# Copyright 2009, 2016, João L. A. C. Rosas
 #
 # Special thanks to Hilário Leal Fontes and Maria José Machado,
 # who helped to test the script and made very helpful suggestions
@@ -38,13 +38,26 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 
-#The file 'mt-location' defines $mosesdir for all scripts and is called by the `source` command below.
+#Edit the file 'mt-location' to change $mosesdir for all scripts.
+source mt-location-1.00
+if [ ! -d "$mtdir" ]; then
+  echo "The \$mtdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$MMMdir" ]; then
+  echo "The \$MMMdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$mosesdir" ]; then
+  echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. If it is correct, then there could have been a problem compiling the Moses system, present in \$mosesdir. Exiting."
+  exit 1
+fi
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Even if you are using the demonstration corpus, you have to fill the $report_file parameter so that the script can be executed !!! 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #Name of the report of the training of the corpus to be used (time-saving tip: copy and paste it here; the directory where you can find the report files is $mosesdir/reports); example of a possible name of a report file: train.day-2014-11-01.time-21-34-23.pt-en.C-800-new.for_train-60-1.LM-800-new.MM-1.Tu-0.report) (!!! omit the path !!!; you MUST fill in this parameter !!!)
-report_file=
+report_file=pt-en.C-200000.for_train-60-1.LM-300000.MM-1.Tu-0.day-2016-01-17.time-18-25-14.report
 
 #Create a translation report when translations are finished; 1 = Do; Any other value = Do not
 create_translation_report=1
@@ -108,8 +121,6 @@ distortionlimit=6
 ####################################################################################
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
-#The file 'mt-location' defines $mosesdir for all scripts.
-source $( cd $(dirname $0) ; pwd -P )/mt-location
 
 startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
 a=$0

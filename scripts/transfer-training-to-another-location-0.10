@@ -35,7 +35,7 @@ mosesdirotheruser="$HOME/Desktop/Machine-Translation/moses-irstlm-randlm"
 # DON'T CHANGE THE LINES THAT FOLLOW ... unless you know what you are doing!
 ####################################################################################
 # The file 'mt-location' defines $mosesdirmine
-source mt-location-1.0
+source mt-location-1.00
 if [ ! -d "$mosesdir" ]; then
   echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
   exit 1

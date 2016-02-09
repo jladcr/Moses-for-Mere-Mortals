@@ -32,14 +32,6 @@
 # The values of the variables that follow should be filled according to your needs:
 #####################################################################################
 #Edit the file 'mt-location' to change $mosesdir and $MMMdir for all scripts.
-source mt-location-1.00
-if [ ! -d "$MMMdir" ]; then
-  echo "The \$MMMdir directory and/or the \$mtdir directory does not exist. Please check these variables in the mt-location-1.00 script. Exiting."
-  exit 1
-fi
-
-#Full path of the already trained corpora (place where trainings are stocked)
-corpora_trained="$mosesdir/corpora_trained"
 
 #Number of processors of your computer that will be used by MGIZA (if you use all the processors available, the training speed will be improve considerably)
 #!!! To use all the cores available in your computer, leave this parameter empty!!!
@@ -105,6 +97,15 @@ startdate=`date +day:%d/%m/%Y-time:%H:%M:%S`
 a=$0
 d1=`date +%s`
 logname=${a##*/}-$d1
+
+source mt-location-1.00
+if [ ! -d "$MMMdir" ]; then
+  echo "The \$MMMdir directory and/or the \$mtdir directory does not exist. Please check these variables in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+
+#Full path of the already trained corpora (place where trainings are stocked)
+corpora_trained="$mosesdir/corpora_trained"
 
 if [ "$report." == "." ]; then
   report=create.`date +day-%Y-%m-%d.time-%H-%M-%S`.report

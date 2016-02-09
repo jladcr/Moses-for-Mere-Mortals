@@ -30,20 +30,6 @@
 #####################################################################################
 
 #Edit the file 'mt-location' to change $mosesdir for all scripts.
-source mt-location-1.00
-if [ ! -d "$mtdir" ]; then
-  echo "The \$mtdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
-  exit 1
-fi
-if [ ! -d "$MMMdir" ]; then
-  echo "The \$MMMdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
-  exit 1
-fi
-if [ ! -d "$mosesdir" ]; then
-  echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. If it is correct, then there could have been a problem compiling the Moses system, present in \$mosesdir. Exiting."
-  exit 1
-fi
-
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #NOTE 1: The corpus that you want to train, together with the respective tuning files (if different), the testing files (if different), the file used for recasing, and the file used to build the language model (if different) should be placed in $mosesdir/corpora_for_training !!!
 #NOTE 2: After the script is executed, you will find a report of what has been done (the corpus summary file) in $mosesdir/reports
@@ -317,6 +303,20 @@ startdate=`date +day:%d/%m/%y-time:%H:%M:%S`
 a=$0
 d1=`date +%s`
 logname=${a##*/}-$d1
+
+source mt-location-1.00
+if [ ! -d "$mtdir" ]; then
+  echo "The \$mtdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$MMMdir" ]; then
+  echo "The \$MMMdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. Exiting."
+  exit 1
+fi
+if [ ! -d "$mosesdir" ]; then
+  echo "The \$mosesdir directory does not exist. Please check the value assigned to this variable in the mt-location-1.00 script. If it is correct, then there could have been a problem compiling the Moses system, present in \$mosesdir. Exiting."
+  exit 1
+fi
 
 #Determine number of CPU cores that are to be used
 num_cores=`grep -c ^processor /proc/cpuinfo`

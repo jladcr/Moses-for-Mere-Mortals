@@ -13,11 +13,11 @@ ___
 
   _~$_ `mkdir /home/{username}/Desktop/Machine-Translation` [Enter] (“{username}” is your Linux userid)
   
-3. Download the latest Moses-for-Mere-Mortals (MMM) release (e.g., 1.24) to /home/{username}/Desktop/Machine-Translation:
+3. Download the latest Moses-for-Mere-Mortals (MMM) release (e.g., 1.23) to /home/{username}/Desktop/Machine-Translation:
 
   _~$_ `cd /home/{username}/Desktop/Machine-Translation` [Enter]
   
-  _~/Desktop/Machine-Translation$_ `wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.24.tar.gz` [Enter]
+  _~/Desktop/Machine-Translation$_ `wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.23.tar.gz` [Enter]
   
 4. Extract the latest MMM release:
  

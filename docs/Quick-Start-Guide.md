@@ -13,25 +13,25 @@ ___
 
   _~$_ `mkdir /home/{username}/Desktop/Machine-Translation` [Enter] (“{username}” is your Linux userid)
   
-3. Download the latest Moses-for-Mere-Mortals (MMM) release (e.g., 1.23) to /home/{username}/Desktop/Machine-Translation:
+3. Download the latest Moses-for-Mere-Mortals (MMM) release (e.g., 1.24) to /home/{username}/Desktop/Machine-Translation:
 
   _~$_ `cd /home/{username}/Desktop/Machine-Translation` [Enter]
   
-  _~/Desktop/Machine-Translation$_ `wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.23.tar.gz` [Enter]
+  _~/Desktop/Machine-Translation$_ `wget https://github.com/jladcr/Moses-for-Mere-Mortals/archive/v1.24.tar.gz` [Enter]
   
 4. Extract the latest MMM release:
  
-  _~/Desktop/Machine-Translation$_ `tar xvf /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz` [Enter]
+  _~/Desktop/Machine-Translation$_ `tar xvf /home/{username}/Desktop/Machine-Translation/v1.24.tar.gz` [Enter]
   
 5. Move the contents of the directory just created and erase it as well as the tar.gz file:
 
   _~/Desktop/Machine-Translation$_ `mkdir /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals` [Enter]
   
-  _~/Desktop/Machine-Translation$_ `mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals` [Enter]
+  _~/Desktop/Machine-Translation$_ `mv /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.24/* /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals` [Enter]
   
-  _~/Desktop/Machine-Translation$_ `rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.23/` [Enter]
+  _~/Desktop/Machine-Translation$_ `rm -rf /home/{username}/Desktop/Machine-Translation/Moses-for-Mere-Mortals-1.24/` [Enter]
   
-  _~/Desktop/Machine-Translation$_ `rm -f /home/{username}/Desktop/Machine-Translation/v1.23.tar.gz` [Enter]
+  _~/Desktop/Machine-Translation$_ `rm -f /home/{username}/Desktop/Machine-Translation/v1.24.tar.gz` [Enter]
    
 6. Change to the Moses for Mere Mortals scripts directory:
 

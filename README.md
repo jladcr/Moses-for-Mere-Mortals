@@ -1,4 +1,4 @@
-#Moses-for-Mere-Mortals: Machine translation for the real world 
+# Moses-for-Mere-Mortals: Machine translation for the real world 
 
 *Please use the https://github.com/jladcr/Moses-for-Mere-Mortals/releases link to download the latest stable release.*
 

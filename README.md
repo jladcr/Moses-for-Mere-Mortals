@@ -1,7 +1,7 @@
 # Moses-for-Mere-Mortals: Machine translation for the real world 
-
+---
 **THIS SITE IS NO LONGER SUPPORTED. IT WAS BRIEFLY A COMPONENT OF MOSES SMT AND ITS AUTHORS WERE PART OF THE MOSES SMT DEVELOPMENT TEAM. IT WAS NICE WHILE IT LASTED, BUT THE TEAM NO LONGER EXISTS AND THE SOFTWARE HASN'T BEEN UPDATED FOR SEVERAL YEARS. IT IS THEREFORE APPROPRIATE TO SIGNAL THAT THE PROJECT HAS ENDED.**
-
+---
 *Please use the https://github.com/jladcr/Moses-for-Mere-Mortals/releases link to download the latest stable release.*
 
 Set of Linux bash scripts that, together, create a **basic translation chain prototype** able of processing **very large corpora**. It uses **Moses**, a widely known statistical machine translation (SMT) system. 
